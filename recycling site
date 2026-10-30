@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=ca4a1f1f-5722-4002-b7ba-0386346dadb8
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta property="og:image" content="https://smartrecyclingnet.netlify.app/.netlify/og-image/d13741d4143860fa5053356daa3d61b4.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Recycling — LPU Campus</title>
+  <meta name="description" content="Sort your waste right at Lovely Professional University. Ask the sorter, learn the bins, watch the campus impact grow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310160f'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23c6f24e' font-family='serif' font-weight='bold'>S</text></svg>" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="wordmark" href="#top">
+      <span class="mark" aria-hidden="true">●</span>
+      Smart&nbsp;Recycling
+      <span class="dot-tld">.lpu</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#sorter">Sorter</a>
+      <a href="#bins">The five bins</a>
+      <a href="#impact">Impact</a>
+      <a href="#points">Drop points</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <p class="kicker mono reveal">LOVELY PROFESSIONAL UNIVERSITY · WASTE DIVISION</p>
+      <h1 class="reveal d1">Sort it <em>before</em><br />you drop it.</h1>
+      <p class="lede reveal d2">
+        One campus. Five bins. Zero excuses. Describe anything you're about to throw
+        and the sorter tells you exactly where it goes — plus what the campus has
+        diverted from landfill so far.
+      </p>
+      <div class="hero-meta reveal d3">
+        <a class="cta" href="#sorter">Ask the sorter <span aria-hidden="true">↓</span></a>
+        <div class="tick-wrap">
+          <span class="mono tick-label">JUST SORTED</span>
+          <ul class="ticker" id="ticker" aria-live="polite"></ul>
+        </div>
+      </div>
+      <div class="hero-strip reveal d4" aria-hidden="true">
+        <div class="strip-track">
+          <span>wet</span><span>dry</span><span>e&#8209;waste</span><span>hazardous</span><span>biomedical</span>
+          <span>wet</span><span>dry</span><span>e&#8209;waste</span><span>hazardous</span><span>biomedical</span>
+          <span>wet</span><span>dry</span><span>e&#8209;waste</span><span>hazardous</span><span>biomedical</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SORTER ============ -->
+    <section class="sorter" id="sorter">
+      <div class="sorter-head">
+        <h2>The sorter<span class="accent">.</span></h2>
+        <p class="mono hint">AI POWERED · SWM RULES 2016 · WORKS ON ANY RUBBISH</p>
+      </div>
+
+      <form class="ask" id="askForm">
+        <label class="mono" for="askInput">WHAT ARE YOU THROWING AWAY?</label>
+        <div class="ask-row">
+          <input id="askInput" name="item" type="text" maxlength="200" autocomplete="off"
+            placeholder="e.g. cold coffee cup with a plastic lid" />
+          <button type="submit">Sort it</button>
+        </div>
+        <div class="chips" id="chips">
+          <button type="button" data-item="banana peel">banana peel</button>
+          <button type="button" data-item="old phone charger">old phone charger</button>
+          <button type="button" data-item="used N95 mask">used N95 mask</button>
+          <button type="button" data-item="maggi masala packet">maggi packet</button>
+          <button type="button" data-item="half bottle of tipex">half bottle of whitener</button>
+          <button type="button" data-item="amazon delivery box">delivery box</button>
+        </div>
+      </form>
+
+      <div class="verdict-slot" id="verdictSlot">
+        <div class="verdict-empty">
+          <span class="mono">THE ANSWER LANDS HERE</span>
+          <p>Type an item above, or tap a chip. The sorter never judges — it just routes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BINS ============ -->
+    <section class="bins" id="bins">
+      <div class="bins-head">
+        <h2>The five bins<span class="accent">.</span></h2>
+        <p class="mono hint">THE WHOLE CAMPUS RUNS ON THESE FIVE COLOURS</p>
+      </div>
+      <div class="bin-rail" id="binRail"><!-- filled by app.js --></div>
+      <p class="bins-note">
+        When in doubt: dry > wet > everything else. Rinse recyclables if the tap is two steps away —
+        a greasy box spoils a whole sack.
+      </p>
+    </section>
+
+    <!-- ============ IMPACT ============ -->
+    <section class="impact" id="impact">
+      <div class="impact-head">
+        <h2>Campus impact<span class="accent">.</span></h2>
+        <p class="mono hint">LIVE · COUNTS EVERY SORT MADE ON THIS PAGE</p>
+      </div>
+      <div class="impact-grid">
+        <div class="stat-block big">
+          <span class="mono label">ITEMS SORTED · LAST 24H</span>
+          <strong class="count" id="statToday">—</strong>
+        </div>
+        <div class="stat-block big">
+          <span class="mono label">ALL TIME</span>
+          <strong class="count" id="statTotal">—</strong>
+        </div>
+        <div class="bars" id="bars" aria-label="Sortings by category"></div>
+      </div>
+    </section>
+
+    <!-- ============ DROP POINTS ============ -->
+    <section class="points" id="points">
+      <div class="points-head">
+        <h2>Drop points<span class="accent">.</span></h2>
+        <p class="mono hint">BINS & PICKUP SHEDS ON CAMPUS · 6:30 – 21:00 DAILY</p>
+      </div>
+      <ul class="points-list">
+        <li><span class="pt-name">Library Lawn · Block 63 side</span><span class="pt-tags mono">WET · DRY</span></li>
+        <li><span class="pt-name">Uni Mall food court exit</span><span class="pt-tags mono">WET · DRY · BIOMEDICAL</span></li>
+        <li><span class="pt-name">Hostel H-block turn</span><span class="pt-tags mono">WET · DRY · E&#8209;WASTE</span></li>
+        <li><span class="pt-name">Workshops rear gate · Block 34</span><span class="pt-tags mono">HAZARDOUS · E&#8209;WASTE</span></li>
+        <li><span class="pt-name">Sports complex main gate</span><span class="pt-tags mono">WET · DRY</span></li>
+        <li><span class="pt-name">Health centre rear bay</span><span class="pt-tags mono">BIOMEDICAL ONLY</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="mono">SMART RECYCLING · LPU CAMPUS INITIATIVE</span>
+    <span class="mono">SORTED BY THE CAMPUS, FOR THE CAMPUS</span>
+  </footer>
+
+  <template id="verdictTpl">
+    <article class="verdict">
+      <div class="v-main">
+        <span class="v-stamp mono"></span>
+        <h3 class="v-item"></h3>
+        <p class="v-reason"></p>
+      </div>
+      <div class="v-side">
+        <span class="mono v-how-label">HOW TO DROP IT</span>
+        <p class="v-how"></p>
+      </div>
+    </article>
+  </template>
+
+  <template id="skeletonTpl">
+    <div class="verdict skeleton">
+      <div class="v-main">
+        <span class="sk sk-stamp"></span>
+        <span class="sk sk-line w60"></span>
+        <span class="sk sk-line w90"></span>
+      </div>
+      <div class="v-side">
+        <span class="sk sk-line w40"></span>
+        <span class="sk sk-line w80"></span>
+      </div>
+    </div>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
+<script async src="/.netlify/scripts/ar" data-netlify-deploy-id="6ae4405b7ae896d2db7dfd41" data-netlify-site-id="ca4a1f1f-5722-4002-b7ba-0386346dadb8" data-agent-runner-id="6ae43ee02f187b11cc9d0f72"></script>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="ca4a1f1f-5722-4002-b7ba-0386346dadb8" data-app-host="app.netlify.com" data-account-tier="free"></script>
